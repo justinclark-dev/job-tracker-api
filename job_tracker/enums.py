@@ -3,12 +3,12 @@
 from django.db import models
 
 class Status(models.TextChoices):
-    BOOKMARKED = 'bookmarked', 'BOOKMARKED'
-    APPLYING = 'applying', 'APPLYING'
-    APPLIED = 'applied', 'APPLIED'
-    INTERVIEWING = 'interviewing','INTERVIEWING'
-    OFFER = 'offer', 'OFFER'
-    REJECTED = 'rejected', 'REJECTED'
+    BOOKMARKED = 'bookmarked', 'Bookmarked'
+    APPLYING = 'applying', 'Applying'
+    APPLIED = 'applied', 'Applied'
+    INTERVIEWING = 'interviewing','Interviewing'
+    OFFER = 'offer', 'Offer'
+    REJECTED = 'rejected', 'Rejected'
 
 class DocumentType(models.TextChoices):
     RESUME = 'resume', 'RESUME'

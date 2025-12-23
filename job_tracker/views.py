@@ -1,13 +1,6 @@
 # from django.shortcuts import render
 from rest_framework import generics
-from .serializers import (
-    JobApplicationSerializer,
-    DocumentSerializer,
-    InterviewSerializer,
-    CompanySerializer,
-    ContactPersonSerializer,
-    FollowUpSerializer
-)
+from django.contrib.auth.models import User
 from .models import (
     JobApplication,
     Document,
@@ -16,6 +9,30 @@ from .models import (
     ContactPerson,
     FollowUp
 )
+from .serializers import (
+    UserSerializer,
+    JobApplicationSerializer,
+    DocumentSerializer,
+    InterviewSerializer,
+    CompanySerializer,
+    ContactPersonSerializer,
+    FollowUpSerializer
+)
+# for building API endpoint to get enums for the UI
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .enums import Status  # Import the Status enum
+
+# User
+class UserList(generics.ListCreateAPIView):
+    # tell django how to retrieve all objects from the DB, order by id ascending
+    queryset = User.objects.all().order_by('id') 
+    # tell django what serializer to use
+    serializer_class = UserSerializer 
+
+class UserDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all().order_by('id')
+    serializer_class = UserSerializer
 
 # Job Application
 class JobApplicationList(generics.ListCreateAPIView):
@@ -82,3 +99,20 @@ class FollowUpList(generics.ListCreateAPIView):
 class FollowUpDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = FollowUp.objects.all().order_by('id')
     serializer_class = FollowUpSerializer
+
+
+# ENUM FUNCTIONS (to make enpoints to get enum values for the UI dropdowns)
+# https://www.django-rest-framework.org/api-guide/views/#function-based-views
+# marks the function as an API endpoint
+@api_view(['GET'])
+# defines a view function that takes an HTTP request as a parameter
+def get_status_choices(request):
+    # returns a JSON response containing a list of status choices. 
+    # The list comprehension iterates through Status.choices
+    # and creates a dictionary for each one.
+    return Response({
+        'choices': [
+            {'value': value, 'label': label} 
+            for value, label in Status.choices
+        ]
+    })

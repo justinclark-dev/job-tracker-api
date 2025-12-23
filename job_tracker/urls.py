@@ -2,10 +2,13 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+
+    # api/users
+    path('api/users', views.UserList.as_view(), name='user_list'), # routes to JobApplicationList view for handling
+    path('api/users/<int:pk>', views.UserDetail.as_view(), name='user_detail'), # routes to JobApplicationDetail view for handling
+
     # api/job_applications
-    # routes to JobApplicationList view for handling
     path('api/job_applications', views.JobApplicationList.as_view(), name='job_application_list'), 
-    # routes to JobApplicationDetail view for handling
     path('api/job_applications/<int:pk>', views.JobApplicationDetail.as_view(), name='job_application_detail'), 
 
     # api/documents
@@ -27,4 +30,7 @@ urlpatterns = [
     # api/follow_ups
     path('api/follow_ups', views.FollowUpList.as_view(), name='follow_up_list'), 
     path('api/follow_ups/<int:pk>', views.FollowUpDetail.as_view(), name='follow_up_detail'), 
+
+    # Paths for getting enum choices from our view endpoints:
+    path('api/status-choices/', views.get_status_choices, name='status-choices'),
 ]
