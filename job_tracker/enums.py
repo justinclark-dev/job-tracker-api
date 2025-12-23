@@ -11,29 +11,29 @@ class Status(models.TextChoices):
     REJECTED = 'rejected', 'Rejected'
 
 class DocumentType(models.TextChoices):
-    RESUME = 'resume', 'RESUME'
-    COVER_LETTER = 'cover_letter', 'COVER_LETTER'
-    OTHER = 'other', 'OTHER'
+    RESUME = 'resume', 'Resume'
+    COVER_LETTER = 'cover_letter', 'Cover Letter'
+    OTHER = 'other', 'Other'
 
 class InterviewFormat(models.TextChoices):
-    PHONE = 'phone', 'PHONE'
-    VIDEO = 'video', 'VIDEO'
-    ONSITE = 'onsite', 'ONSITE'
+    PHONE = 'phone', 'Phone'
+    VIDEO = 'video', 'Video'
+    ONSITE = 'onsite', 'On-site'
 
 class InterviewType(models.TextChoices):
-    PHONE_SCREEN = 'phone_screen', 'PHONE_SCREEN'
-    ONE_ON_ONE = 'one_on_one', 'ONE_ON_ONE'
-    GROUP = 'group', 'GROUP'
+    PHONE_SCREEN = 'phone_screen', 'Phone Screen'
+    ONE_ON_ONE = 'one_on_one', 'One-on-One'
+    GROUP = 'group', 'Group'
 
 class FollowUpType(models.TextChoices):
-    POST_APPLICATION = 'post_application', 'POST_APPLICATION'
-    POST_INTERVIEW = 'post_interview', 'POST_INTERVIEW'
-    THANK_YOU = 'thnak_you', 'THANK_YOU'
-    CHECK_IN = 'check_in', 'CHECK_IN'
-    NETWORKING = 'networking', 'NETWORKING'
+    POST_APPLICATION = 'post_application', 'Post-Application'
+    POST_INTERVIEW = 'post_interview', 'Post-Interview'
+    THANK_YOU = 'thnak_you', 'Thnak You'
+    CHECK_IN = 'check_in', 'Check-In'
+    NETWORKING = 'networking', 'Networking'
 
 class FollowUpMethod(models.TextChoices):
-    EMAIL = 'email', 'EMAIL'
-    PHONE = 'phone', 'PHONE'
-    LINKEDIN = 'linkedin', 'LINKEDIN'
-    IN_PERSON = 'in_person', 'IN_PERSON'
+    EMAIL = 'email', 'Email'
+    PHONE = 'phone', 'Phone'
+    LINKEDIN = 'linkedin', 'LinkedIn'
+    IN_PERSON = 'in_person', 'In-Person'

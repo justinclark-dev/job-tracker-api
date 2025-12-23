@@ -21,7 +21,14 @@ from .serializers import (
 # for building API endpoint to get enums for the UI
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .enums import Status  # Import the Status enum
+from .enums import (
+    Status,
+    DocumentType,
+    InterviewFormat,
+    InterviewType,
+    FollowUpType,
+    FollowUpMethod
+)
 
 # User
 class UserList(generics.ListCreateAPIView):
@@ -114,5 +121,50 @@ def get_status_choices(request):
         'choices': [
             {'value': value, 'label': label} 
             for value, label in Status.choices
+        ]
+    })
+
+@api_view(['GET'])
+def get_document_type_choices(request):
+    return Response({
+        'choices': [
+            {'value': value, 'label': label} 
+            for value, label in DocumentType.choices
+        ]
+    })
+
+@api_view(['GET'])
+def get_interview_format_choices(request):
+    return Response({
+        'choices': [
+            {'value': value, 'label': label} 
+            for value, label in InterviewFormat.choices
+        ]
+    })
+
+@api_view(['GET'])
+def get_interview_type_choices(request):
+    return Response({
+        'choices': [
+            {'value': value, 'label': label} 
+            for value, label in InterviewType.choices
+        ]
+    })
+
+@api_view(['GET'])
+def get_followup_type_choices(request):
+    return Response({
+        'choices': [
+            {'value': value, 'label': label} 
+            for value, label in FollowUpType.choices
+        ]
+    })
+
+@api_view(['GET'])
+def get_followup_method_choices(request):
+    return Response({
+        'choices': [
+            {'value': value, 'label': label} 
+            for value, label in FollowUpMethod.choices
         ]
     })

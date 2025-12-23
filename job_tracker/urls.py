@@ -33,4 +33,9 @@ urlpatterns = [
 
     # Paths for getting enum choices from our view endpoints:
     path('api/status-choices/', views.get_status_choices, name='status-choices'),
+    path('api/document-type-choices/', views.get_document_type_choices, name='status-choices'),
+    path('api/interview_format-choices/', views.get_interview_format_choices, name='status-choices'),
+    path('api/interview_type-choices/', views.get_interview_type_choices, name='status-choices'),
+    path('api/followup_type-choices/', views.get_followup_type_choices, name='status-choices'),
+    path('api/followup_method-choices/', views.get_followup_method_choices, name='status-choices'),
 ]
