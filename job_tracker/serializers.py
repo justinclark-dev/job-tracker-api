@@ -7,12 +7,30 @@ from .models import (
     ContactPerson,
     FollowUp
 )
+from django.contrib.auth.models import User
+
+class UserSerializer(serializers.ModelSerializer): 
+    class Meta:
+        # tell django which model to use
+        model = User 
+        # tell django which fields to include
+        fields = (
+            'id',
+            'username',
+            'password',
+            'first_name',
+            'last_name',
+            'email',
+            'is_staff',
+            'is_active',
+            'last_login',
+            'date_joined',
+            'is_superuser'
+        )
 
 class JobApplicationSerializer(serializers.ModelSerializer): 
     class Meta:
-        # tell django which model to use
         model = JobApplication 
-        # tell django which fields to include
         fields = (
             'id',
             'user_id', 
@@ -31,9 +49,7 @@ class JobApplicationSerializer(serializers.ModelSerializer):
 
 class DocumentSerializer(serializers.ModelSerializer): 
     class Meta:
-        # tell django which model to use
         model = Document 
-        # tell django which fields to include
         fields = (
             'id',
             'job_application_id',
@@ -46,9 +62,7 @@ class DocumentSerializer(serializers.ModelSerializer):
 
 class InterviewSerializer(serializers.ModelSerializer): 
     class Meta:
-        # tell django which model to use
         model = Interview 
-        # tell django which fields to include
         fields = (
             'id',
             'job_application_id',
@@ -65,9 +79,7 @@ class InterviewSerializer(serializers.ModelSerializer):
 
 class CompanySerializer(serializers.ModelSerializer): 
     class Meta:
-        # tell django which model to use
         model = Company 
-        # tell django which fields to include
         fields = (
             'id',
             'company_name'
@@ -75,9 +87,7 @@ class CompanySerializer(serializers.ModelSerializer):
 
 class ContactPersonSerializer(serializers.ModelSerializer): 
     class Meta:
-        # tell django which model to use
         model = ContactPerson 
-        # tell django which fields to include
         fields = (
             'id',
             'company_id'
@@ -90,9 +100,7 @@ class ContactPersonSerializer(serializers.ModelSerializer):
 
 class FollowUpSerializer(serializers.ModelSerializer): 
     class Meta:
-        # tell django which model to use
         model = FollowUp 
-        # tell django which fields to include
         fields = (
             'id',
             'job_application_id',
